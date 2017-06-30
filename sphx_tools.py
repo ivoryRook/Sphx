@@ -71,7 +71,6 @@ class XdoPy(object):
 		return
 			
 	def mouse_click(self,button='1',click_count=1,wait_between=0.0):
-		
 		self._cmd_args += ['click',button]
 		for clicks in range(click_count):		
 			call(self._cmd_args)
@@ -89,11 +88,17 @@ class XdoPy(object):
 		self._cmd_args=['xdotool']
 		return
 	
-	def drag(self,x0,y0,x1,y1):
-		self._cmd_args += ['mousemove',str(x0),str(y0),'mousedown','1','mousemove',str(x1),str(y1),'mouseup','1']
+	def mouse_moveto_down(self,x,y,button='1'):
+		self._cmd_args += ['mousemove',str(x),str(y),'mousedown',button]
 		call(self._cmd_args)
 		self._cmd_args=['xdotool']
-		return
+		return		
+	
+	def mouse_moveto_up(self,x,y,button='1'):
+		self._cmd_args += ['mousemove',str(x),str(y),'mouseup',button]
+		call(self._cmd_args)
+		self._cmd_args=['xdotool']
+		return	
 
 
 	
@@ -116,11 +121,29 @@ class XdoPy(object):
 		call(self._cmd_args)
 		self._cmd_args=['xdotool']
 		return
+		
+	def send_keyup(self,text,window_id=None):
+		if window_id is None:
+			self._cmd_args += ['keyup',"{0}".format(text)]
+		else:
+			self._cmd_args += ['keyup','--window',window_id,"{0}".format(text)]
+		call(self._cmd_args)
+		self._cmd_args=['xdotool']
+		return
+	
+	def send_keydown(self,text,window_id=None):
+		if window_id is None:
+			self._cmd_args += ['keydown',"{0}".format(text)]
+		else:
+			self._cmd_args += ['keydown','--window',window_id,"{0}".format(text)]
+		call(self._cmd_args)
+		self._cmd_args=['xdotool']
+		return
 
 
 class GuiPiece(object):
 	
-	def __init__(self,main_path,gui_dir='GuiPieces',threshold=.9):
+	def __init__(self,main_path,gui_dir='GuiPieces',threshold=0.9):
 		self.main_path = main_path
 		self.gui_dir = gui_dir
 		self.threshold = threshold
