@@ -62,12 +62,19 @@ class SphxUI():
 		self.create_gui_pieces_list()	
 		return
 
+	def start(self):
+		self.root.mainloop()
+		return
+
 	def _dummy(self):
 		pass
 
 	def _dummy_event(self,event,arg=None):
 		pass
 
+	# TOP MENU
+	#
+	#
 	def add_file_menu(self):
 		self.menubar = Menu(self.root)
 		self.filemenu = Menu(self.menubar,tearoff=0)
@@ -224,7 +231,10 @@ class SphxUI():
 			self.root.quit()
 		if answer==2:
 			self.exit_save.destroy()
-
+	
+	# SCRIPT PAD COLUMN
+	#
+	#
 	def create_script_pad(self):
 		script_pad_label = Label(self.master,text='SCRIPT BUILD (right-click for options)')
 		script_pad_label.grid(row=0,column=1)
@@ -322,6 +332,9 @@ class SphxUI():
 			self.action_buttons_list[16].config(state='normal')
 		return
 
+	# ACTION BUTTONS COLUMN
+	#
+	#
 	def create_action_buttons(self):
 		action_buttons_label = Label(self.master,text='SCRIPT ACTIONS')
 		action_buttons_label.grid(row=0,column=2)		
@@ -392,12 +405,16 @@ class SphxUI():
 		self.take_new_gui_piece_button = Button(self.gui_piece_extras,text='Take New',
 			command=self._get_gui_piece)
 		self.take_new_gui_piece_button.grid(row=0,column=0,sticky='nwes')
+		# TO FINISH -- LOAD BUTTON
 		self.load_png_gui_piece_button = Button(self.gui_piece_extras,text='Load Png',
 			command=self._dummy)
+		self.load_png_gui_piece_button.config(state=DISABLED)
 		self.load_png_gui_piece_button.grid(row=0,column=1,sticky='nwes')		
+		# TO FINISH -- REMOVE BUTTON
 		self.remove_gui_piece_button = Button(self.gui_piece_extras,text='Remove',
 			command=self._dummy)
-		self.remove_gui_piece_button.grid(row=0,column=2,sticky='nwes')		
+		self.remove_gui_piece_button.grid(row=0,column=2,sticky='nwes')	
+		self.remove_gui_piece_button.config(state=DISABLED)		
 		return	
 	def _append_gui_pieces_list(self,gui_piece):
 		gui_piece_text = '{0}. {1}'.format(len(self.gui_pieces)+1,gui_piece)
@@ -406,10 +423,8 @@ class SphxUI():
 		return
 	# TO FINISH
 	def _remove_gui_piece_button(self,gui_piece):
-		
 		# if gui piece is in script lines that is removed
 		# turn back to <right-click> tags in script line
-		
 		return
 	def _activate_gui_pieces_list(self,script_line_data):
 		if len(self.gui_pieces):
@@ -589,7 +604,7 @@ class SphxUI():
 		self._scanfix_script_lines(None)		
 
 
-	#     -- sleep & other functions --
+	#     -- sleep & other action functions --
 	#				
 	#
 	def _append_other_action(self,script_text):
@@ -597,16 +612,7 @@ class SphxUI():
 		self.script_pad.insert(END,script_line)
 		self._scanfix_script_lines(None)
 
-	
-	def start(self):
-		self.root.mainloop()
-		return
 
-
-# xdotool windowactivate --sync $WID
-# xdotool key --clearmodifiers ctrl+l
-
-# WHAT ARE SYNC AND CLEARMODIFIERS ??
 
 class SphxRun():
 	
