@@ -8,9 +8,6 @@
 
 #
 
-# for activate_window or minimize_window action buttons
-# REMEMBER: DISABLE THEM UNTIL (self.window_names)>0
-
 #
 
 # THRESHOLD IS MORE SENSITIVE -- MIGHT NEED TO INCREASE FOR SMALLER OBJECTS
