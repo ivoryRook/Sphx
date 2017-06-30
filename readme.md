@@ -20,6 +20,7 @@ To install Opencv3 for Python 2.7:
 To install Xdotool and gnome-screenshot:
 
 sudo apt update
+
 sudo apt install xdotool gnome-screenshot
 
 ## Sphx UI Reference
