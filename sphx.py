@@ -6,13 +6,6 @@
 
 #
 
-#
-
-# for activate_window or minimize_window action buttons
-# REMEMBER: DISABLE THEM UNTIL (self.window_names)>0
-
-#
-
 # THRESHOLD IS MORE SENSITIVE -- MIGHT NEED TO INCREASE FOR SMALLER OBJECTS
 # AND DECREASE FOR MORE OBLONG OBJECTS OR LARGER AND MORE DISTINCTIVE
 
@@ -561,9 +554,13 @@ class SphxUI():
 				self._replace_gui_piece(data)
 				for button in self.gui_piece_buttons:
 					button.config(bg='blue',fg='white')
+			
 				self.print_button.config(state='normal')
 				for button in self.action_buttons_list:
 					button.config(state='normal')
+				if len(self.window_names) == 0:
+					self.action_buttons_list[13].config(state=DISABLED)
+					self.action_buttons_list[14].config(state=DISABLED)
 				self.add_new_gui_piece_button.config(state='normal')
 				self.gui_piece_list_active = False
 
