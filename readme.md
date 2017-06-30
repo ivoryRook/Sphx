@@ -1,6 +1,6 @@
 ## Synopsis
 
-Sphx is an automation tool for Python 2 using Tkinter, openCV3, Xdotool, and gnome-screenshot.
+Sphx is an automation tool for Python 2.7 using Tkinter, openCV3, Xdotool, and gnome-screenshot.
 SphxUI collects 'Gui Pieces' which are snapshots from the Desktop GUI that are located at any point.
 SphxRun will run a script built in the SphxUI, including mouse actions, keyboard actions, and window actions.
 
