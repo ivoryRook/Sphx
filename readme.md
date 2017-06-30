@@ -16,6 +16,11 @@ Sphx is inspired by the Sikuli project [Sikuli](http://sikulix.com), made entire
 ## Installation
 
 To install Opencv3 for Python 2.7: [Opencv3 installation script for Python 2.7](https://gist.github.com/sbrugman/f9d897f28e674f7a89bbf131e26b98b0)
+To install Xdotool and gnome-screenshot:
+
+sudo apt update
+sudo apt install xdotool gnome-screenshot
+
 
 
 ## API Reference
