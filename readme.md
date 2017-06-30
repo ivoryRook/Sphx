@@ -10,7 +10,7 @@ SphxRun will run a script built in the SphxUI, including mouse actions, keyboard
 
 ## Motivation
 
-Sphx is inspired by the Sikuli project [Sikuli](http://sikulix.com), made entirely in Python 2 using Tkinter, Opencv3, Xdotool, and gnome-screenshot utility for a vm or normal (X)Ubuntu 16.04.
+Sphx is inspired by the Sikuli project [Sikuli](http://sikulix.com), made entirely in Python 2.7 using Tkinter, Opencv3, Xdotool, and gnome-screenshot utility for a vm or normal (X)Ubuntu 16.04.
 
 
 ## Installation
