@@ -6,7 +6,7 @@ SphxRun will run a script built in the SphxUI, including mouse actions, keyboard
 
 ## Screenshots
 
-![Empty Sphx](/../Sphx/img/sphx_empty.png?raw=true "Sphx")
+![Empty Sphx](/Sphx/img/sphx_empty.png?raw=true "Sphx")
 
 ## Motivation
 
