@@ -412,19 +412,28 @@ class SphxUI():
 		self.load_png_gui_piece_button.grid(row=0,column=1,sticky='nwes')		
 		# TO FINISH -- REMOVE BUTTON
 		self.remove_gui_piece_button = Button(self.gui_piece_extras,text='Remove',
-			command=self._dummy)
+			command=lambda: self._activate_gui_pieces_list(None))
 		self.remove_gui_piece_button.grid(row=0,column=2,sticky='nwes')	
-		self.remove_gui_piece_button.config(state=DISABLED)		
 		return	
 	def _append_gui_pieces_list(self,gui_piece):
 		gui_piece_text = '{0}. {1}'.format(len(self.gui_pieces)+1,gui_piece)
 		self.gui_piece_buttons[len(self.gui_pieces)].config(text=gui_piece_text)
 		self.gui_pieces.append(gui_piece)
 		return
-	# TO FINISH
-	def _remove_gui_piece_button(self,gui_piece):
-		# if gui piece is in script lines that is removed
-		# turn back to <right-click> tags in script line
+
+
+	# WORKING
+	def _remove_gui_piece(self,button_index):
+		removed_gui_piece = self.gui_pieces.pop(button_index)
+		if button_index < len(self.gui_pieces):
+			for replace_index in range(button_index,len(self.gui_pieces)):
+				self.gui_piece_buttons[replace_index].config(text='{0}. {1}'.format(replace_index+1,self.gui_pieces[replace_index]))
+		self.gui_piece_buttons[len(self.gui_pieces)].config(text='')
+		for index in range(len(self.script_lines)):
+			line_data = self.script_lines[index][-1]
+			if line_data == removed_gui_piece:
+				data = '<right-click>',self.script_lines[index]
+				self._replace_gui_piece(data)
 		return
 	def _activate_gui_pieces_list(self,script_line_data):
 		if len(self.gui_pieces):
@@ -435,19 +444,23 @@ class SphxUI():
 			for button in self.action_buttons_list:
 				button.config(state=DISABLED)
 			self.take_new_gui_piece_button.config(state=DISABLED)
-			self.load_png_gui_piece_button.config(state=DISABLED)
+			# self.load_png_gui_piece_button.config(state=DISABLED)
 			self.remove_gui_piece_button.config(state=DISABLED)
 			self.gui_piece_list_active = True
 			self.passed_script_data = script_line_data
+	
 	def _gui_piece_button_click(self,button_index):
 		if button_index < len(self.gui_pieces):
 			gui_piece = self.gui_pieces[button_index]
 			if not self.gui_piece_list_active:
 				self._display_gui_piece(gui_piece)
 			else:
-				script_line_data = self.passed_script_data
-				data = gui_piece,script_line_data
-				self._replace_gui_piece(data)
+				if self.passed_script_data:
+					script_line_data = self.passed_script_data
+					data = gui_piece,script_line_data
+					self._replace_gui_piece(data)
+				else:
+					self._remove_gui_piece(button_index)
 				for button in self.gui_piece_buttons:
 					button.config(bg='blue',fg='white')
 				self.print_button.config(state='normal')
@@ -457,7 +470,7 @@ class SphxUI():
 					self.action_buttons_list[15].config(state=DISABLED)
 					self.action_buttons_list[16].config(state=DISABLED)
 				self.take_new_gui_piece_button.config(state='normal')
-				self.load_png_gui_piece_button.config(state='normal')
+				# self.load_png_gui_piece_button.config(state='normal')
 				self.remove_gui_piece_button.config(state='normal')
 				self.gui_piece_list_active = False
 
@@ -499,7 +512,7 @@ class SphxUI():
 			img = ImageTk.PhotoImage(img_open)
 			img_label = Label(self.img_viewer,image=img)
 			img_label.image = img
-			img_label.grid(row=0,column=0)
+			img_label.grid(row=0,column=0,padx=20,pady=20)
 	def _replace_gui_piece(self,data):
 		new_gui_piece,script_line_data = data
 		line_number,script_text,gui_tagname,gui_tag_start,gui_tag_end,gui_piece = script_line_data
