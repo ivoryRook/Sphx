@@ -42,9 +42,9 @@ GUI PIECES
 The GUI PIECES column on the left side of the Sphx UI is a list of 50 buttons with which to store "Gui Pieces". Gui Pieces are selected snapshots of the desktop interface to be matched against current full desktop screenshots.
 This matching returns the current location of the Gui Piece. Sphx Script actions can identify if a Gui Piece exists, wait for it to appear or disappear, and find the location of this piece which can then be acted upon with mouse actions.
 Clicking on a populated Gui Piece button causes a popup window showing the Gui Piece.
-The 'Take New' button drops the Sphx UI and waits until a selection of the Desktop is taken. The saved Gui Piece is assigned a unique 9 character name and stored in /path/to/Sphx/GuiPieces
+The 'Take New' button drops the Sphx UI and waits until a selection of the Desktop is taken. The saved Gui Piece is assigned a unique 9 character name and stored in /path/to/Sphx/GuiPieces.
 The 'Load Png' button (not currently active) opens a dialog to select a .png to add to the Sphx script Gui Piece library. This is for cases with which the capture of certain images, such as popup windows, might be quite difficult without using other methods.
-The 'Remove' button turns all buttons red and waits for the user to select which Gui Piece to remove. This also will replace all instances of the Gui Piece in the Script Pad with '<right-click>', which will result in a faulty script unless these are replaced.
+The 'Remove' button turns all buttons red and waits for the user to select which Gui Piece to remove. This also will replace all instances of the Gui Piece in the Script Pad with right-click, which will result in a faulty script unless these are replaced.
 
 SCRIPT BUILD
 
