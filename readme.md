@@ -18,7 +18,7 @@ python sphy_run.py script_name.sphx
 
 ## Screenshots
 
-![Empty Sphx](/img/sphx_empty.png?raw=true "Sphx")
+![Empty Sphx](/img/gmail_login.png?raw=true "Sphx")
 
 ## Motivation
 
