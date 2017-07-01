@@ -56,7 +56,7 @@ For the 'name_active_window' action, a name ('window00' to start and increment f
 
 SCRIPT ACTIONS
 
-The SCRIPT ACTIONS column is a list of action buttons which will append to the Script Pad in the SCRIPT BUILD column. Each action button will append the proper script line to the Script Pad with the default values of all variables that must be included. Click, Type, Key, and Window actions are self-explanatory and are described in the previous section. 'set_threshold' will append a line that allows the threshold of the Gui Piece match to be adjusted. A lower threshold percent (percent<90) allows for matches that might have a slight variation from the original Gui Piece, or are more oblong. The sleep action allows for a pause in the script, measured in seconds.
+The SCRIPT ACTIONS column is a list of action buttons which will append to the Script Pad in the SCRIPT BUILD column. Each action button will append the proper script line to the Script Pad with the default values of all variables that must be included. Click, Type, Key, and Window actions are self-explanatory and are described in the previous section. 'set_threshold' will append a line that allows the threshold of the Gui Piece match to be adjusted. A lower threshold percent (percent<90) allows for matches that might have a slight variation from the original Gui Piece or are more oblong. The sleep action allows for a pause in the script measured in seconds.
 When 'Auto-snap' is checked, every action that requires a Gui Piece will automatically hide the Sphx UI to capture a snapshot of the desktop. Unchecked, this will append blank Gui Pieces to the Script Pad.
  
 
@@ -67,7 +67,9 @@ Example:
 from Sphx import SphxRun
 
 sphx_script = SphxRun()
+
 sphx_script.load_script('script.sphx')
+
 sphx_script.run_script()
 
 
