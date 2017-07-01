@@ -328,8 +328,9 @@ class SphxUI():
 			self.action_buttons_list[15].config(state=DISABLED)
 			self.action_buttons_list[16].config(state=DISABLED)
 		else:
-			self.action_buttons_list[15].config(state='normal')
-			self.action_buttons_list[16].config(state='normal')
+			if not self.gui_piece_list_active:
+				self.action_buttons_list[15].config(state='normal')
+				self.action_buttons_list[16].config(state='normal')
 		return
 
 	# ACTION BUTTONS COLUMN
@@ -420,9 +421,6 @@ class SphxUI():
 		self.gui_piece_buttons[len(self.gui_pieces)].config(text=gui_piece_text)
 		self.gui_pieces.append(gui_piece)
 		return
-
-
-	# WORKING
 	def _remove_gui_piece(self,button_index):
 		removed_gui_piece = self.gui_pieces.pop(button_index)
 		if button_index < len(self.gui_pieces):
@@ -448,7 +446,6 @@ class SphxUI():
 			self.remove_gui_piece_button.config(state=DISABLED)
 			self.gui_piece_list_active = True
 			self.passed_script_data = script_line_data
-	
 	def _gui_piece_button_click(self,button_index):
 		if button_index < len(self.gui_pieces):
 			gui_piece = self.gui_pieces[button_index]
@@ -880,7 +877,7 @@ class SphxRun():
 
 
 if __name__ == '__main__':
-	root = Tk(className="SPHX")
+	root = Tk(className="sphx")
 	sphx = SphxUI(root)
 	sphx.start()
 
